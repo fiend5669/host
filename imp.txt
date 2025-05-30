@@ -1,1 +1,731 @@
-hello
+/*
+
+// LOCAL STORAGE
+
+
+const ThemeToggler = () => {
+  const [theme, setTheme] = useState(()=>{
+    const storedTheme = localStorage.getItem('theme');
+    return storedTheme? storedTheme : "black";
+  })
+
+  useEffect(()=>{
+    localStorage.setItem('theme', theme);
+    document.body.style.backgroundColor = theme;
+  }, [theme])
+
+  function changeTheme(){
+    if(theme === "white"){
+      setTheme("black");
+    }else{
+      setTheme("white");
+    }
+  }
+
+  return(
+    <div>
+      <button onClick={()=>changeTheme()}>Toggle Theme</button>
+    </div>
+  )
+}
+*/
+
+
+
+/*
+
+// API FETCHING
+
+const PostsFetcher = () => {
+  const [shouldFetch, sf] = useState(false);
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(()=>{
+    if(shouldFetch === true){
+      const getData = async () => {
+        setIsLoading(true);
+        const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+        const dataa = await res.json();
+        setData(dataa);
+        setIsLoading(false);
+      }
+      getData();
+    }
+  }, [shouldFetch])
+
+  return(
+    <div>
+      <button onClick={()=>{sf(!shouldFetch)}}>Load Posts</button>
+
+      {isLoading && <p>Loading...</p>}
+
+      
+        {
+          shouldFetch && data && (
+            <ul>
+              {data.map(post=> (
+                <li>{post.title}</li>
+              ))}
+            </ul>
+          )
+        }
+      
+    </div>
+  )
+}
+
+*/
+
+
+/*
+
+// FORM
+
+const SimpleForm = () => {
+  const [name, setName] = useState("");
+  const [name2, setName2] = useState("");
+  const [show, showorno] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setName2("");
+    showorno(!show);
+  }
+
+  return(
+    <form onSubmit={handleSubmit}>
+      <input onChange={(e)=>{setName(e.target.value); setName2(e.target.value)}} value={name2}></input>
+      <button type="submit">Submit</button>
+      <p style={{visibility : show? "visible" : "Hidden"}} >Submitted: {name}</p>
+    </form>
+  )
+}
+
+*/
+
+/*
+
+// API FETCH WITH SEARCH
+
+return (
+    <div>
+      
+      <p>Search: </p>
+      <input type="text" onChange={(e) => setInp(e.target.value)}></input>
+      <button onClick={() => search()}>Search</button>
+    
+     <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>name</th>
+          <th>email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((ele) => (
+          <tr>
+            <td>{ele.id}</td>
+            <td>{ele.name}</td>
+            <td>{ele.email}</td>
+          </tr>
+        ))}
+      </tbody>
+     </table>
+      
+     </div>
+  )
+
+
+*/
+
+/*
+
+// CLASS COMPONENT
+
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      count: 0,
+    }
+  }
+
+  increment = () => {
+    this.setState({count: this.state.count + 1});
+  }
+
+  render(){
+    return(
+      <div>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.increment}>Increment</button>
+        
+      </div>
+    )
+  }
+}
+
+*/
+
+
+/*
+
+// PROMISE
+
+async function wait(arg){
+    return new Promise((resolve,reject)=>{
+        
+        setTimeout(()=>{
+            resolve("Waited for 2 seconds");
+        },arg)
+        
+    
+        
+    })
+}
+
+async function run(){ 
+ await wait("2000")
+.then(msg=>console.log(msg));
+.catch(err=>console.log(err));
+       }
+run();
+
+*/
+
+
+/*
+
+// PROMISE 2
+
+async function countdown(num){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            if(num!=0){
+                resolve(num);
+            } else{
+                reject("Lift off!");
+            }
+        }, 1000)
+    })
+}
+
+countdown(3)
+    .then(() => countdown(2))
+    .then(() => countdown(1))
+    .then(() => {
+        console.log("Lift off!");
+    });
+
+*/
+
+/*
+
+// PROMISE 3
+
+async function delayedMessage(message, ms, shouldCancel){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            if(!shouldCancel){
+                resolve(message);
+            } else{
+                reject("Operation Cancelled");
+            }
+        }, ms)
+    })
+}
+
+
+delayedMessage("What?", 1000, false)
+    .then((mess)=>console.log(mess))
+    .catch((mess)=>console.log(mess))
+delayedMessage("What?", 1000, true)
+    .then((mess)=>console.log(mess))
+    .catch((mess)=>console.log(mess))
+
+*/
+
+
+
+
+/*
+
+// PRACTICE 10
+
+const TextInputDisplay = () => {
+  const [text, setText] = useState("");
+
+  return(
+    <div>
+      <input onChange={(e)=> setText(e.target.value)}></input>
+      <p>You typed: {text}</p>
+    </div>
+  )
+}
+
+
+*/
+
+
+
+
+
+
+
+
+/*
+
+
+// API user data
+
+
+const UserProfile = () => {
+  const [name, setName] = useState("");
+  const [email, setmail] = useState("");
+
+  useEffect(()=>{
+    const getData = async () => {
+      const res = await fetch('https://jsonplaceholder.typicode.com/users/1');
+      const dataa = await res.json();
+      setName(dataa.name);
+      setmail(dataa.email);
+    }
+    getData();
+  }, [])
+
+  return (
+    <div>
+      <h1>Name: {name} and Email: {email}</h1>
+    </div>
+  )
+}
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// PERSISTENT INPUT LOCAL STORAGE
+
+
+const PersistentInput = () => {
+  const [text, setText] = useState(()=>{
+    const storedCount = localStorage.getItem('savedText');
+    return storedCount ? storedCount : "";
+  })
+
+  useEffect(()=>{
+    localStorage.setItem('savedText', text);
+  }, [text])
+  
+
+  return(
+    <div>
+      <input type="text" onChange={(e)=>{setText(e.target.value)}} value={text}></input>
+      <p>{text}</p>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+*/
+
+
+
+/*
+
+// function updateGreet(text:string){
+// let ele=document.getElementById("greeting")! as HTMLElement;
+// ele.textContent=text;
+// console.log(ele.textContent);
+// }
+
+// updateGreet("ok")
+
+
+*/
+
+
+
+
+/*
+
+// 23
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+      width: 150px;
+      height: 150px;}
+        .active{
+    background-color: aqua;
+}
+    </style>
+</head>
+<body>
+    <p id="greeting"></p>
+</body>
+<script >
+    var body = document.querySelector("body");
+var button = document.createElement("button");
+var div = document.createElement("div");
+div.id = "box";
+button.innerText = "Toggle";
+body.appendChild(button);
+body.appendChild(div);
+function toggleClass() {
+    // div.classList.add("active");
+    // div.className="active"
+    if (div.classList.contains("active")) {
+        div.classList.remove("active");
+    }
+    else {
+        div.classList.add("active");
+    }
+}
+button.addEventListener('click', function (e) {
+    toggleClass();
+});
+
+</script>
+</html>
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+let button=document.getElementById("btn")!as HTMLInputElement;
+let nam=document.getElementById("name")!as HTMLInputElement;
+let email=document.getElementById("email")!as HTMLInputElement;
+function handleFormSubmit(e):void{
+e.preventDefault();
+console.log(nam.value);
+console.log(email.value);
+
+
+
+}
+
+
+
+button.addEventListener('click',(e:Event)=>{
+handleFormSubmit(e);
+
+})
+
+
+
+
+*/
+
+
+
+
+
+/*
+
+
+let container=document.getElementById("container") as HTMLDivElement;
+let btn1=document.getElementById("btn1") as HTMLButtonElement;
+let btn2=document.getElementById("btn2") as HTMLButtonElement;
+
+function openModal(){
+container.style.display="block"
+}
+function closeModal(){
+container.style.display="none"
+}
+
+btn1.addEventListener('click',(e:Event)=>{
+openModal();
+})
+btn2.addEventListener('click',(e:Event)=>{
+closeModal();
+})
+
+
+
+*/
+
+
+
+
+/*
+
+
+
+import React,{useState,useEffect} from "react";
+
+function Search(){
+
+    const [data,setData]=useState(null);
+    const [error,setError]=useState(null);
+    const [inp,setInp]=useState("");
+
+    useEffect(()=>{
+        
+        async function getData(){
+            try{
+            let response=await fetch("https://jsonplaceholder.typicode.com/users");
+
+            if(!response.ok){
+                throw new Error("Something is wrong");
+            }
+            setData(await response.json());}
+            catch(err){
+                setError(err.message);
+            }
+        }
+            getData();
+        
+          
+
+            
+
+        } ,[])
+
+        function fun(val){
+            let flag=0
+            for(let i=0;i<val.length;i++){
+                if(val[i]==='@'){
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0){
+                data.map((ele)=>{
+                    if(ele.name===val){
+                        console.log(ele.id);
+                       }
+                })
+                    
+              
+            }
+            else{
+                data.map((ele)=>{
+                    if(ele.email===val){
+                        console.log(ele.id);
+                       }
+                })
+            }
+
+        }
+      
+
+        if(error){
+            return (<p>"Error :"error</p>)
+        }
+        if(!data){
+            return (<p>"Loading ....."</p>)
+        }
+
+        return(
+            <div>
+                <input type="text" placeholder="Search By Name Or UserName" onChange={(e)=>{setInp(e.target.value)}}></input>
+                <button onClick={()=>{fun(inp)}}>Search</button>
+            {data.map((ele)=>(
+                <div>
+                <p>ID:{ele.id}</p>
+                <p>Name:{ele.name}</p>
+                <p>Username:{ele.username}</p>
+                <p>Email:{ele.email}</p>
+                </div>
+            ))
+
+        }</div>
+        )
+
+   
+
+
+}
+export default Search;
+
+
+
+
+*/
+
+
+
+
+
+/*
+
+
+
+
+
+import React from "react";
+import { useState,useEffect } from "react";
+function Fun(){
+    const [count, setCount] = useState(() => {
+        const saved = JSON.parse(localStorage.getItem("1"));
+        return saved !== null ? Number(saved) : 0;
+      });
+const [incre,setIncre]=useState(1);
+
+useEffect(()=>{
+    localStorage.setItem("1",count);
+   
+
+    
+
+},[count])
+
+
+return(
+    <div>
+        <span>{count}</span><br />
+        <button onClick={()=>{setCount(count+incre)}}>+</button>
+        <button onClick={()=>{setCount(count-incre)}}>-</button><br />
+        <select onChange={(e)=>{setIncre(Number(e.target.value))}}>
+            <option value="1">Increment By 1</option>
+            <option value="2">Increment By 2</option>
+            <option value="3">Increment By 3</option>
+            <option value="4">Increment By 4</option>
+            <option value="5">Increment By 5</option>
+        </select>
+    </div>
+)
+}
+export default Fun;
+
+
+
+
+
+*/
+
+
+
+/*
+
+let inp = document.getElementById("ageInput") as HTMLInputElement;
+let msg = document.getElementById("errorMsg") as HTMLDivElement;
+
+inp.addEventListener('input', ()=> {
+    const num = Number(inp.value);
+    if(isNaN(num)){
+        msg.style.display = "block";
+    } else{
+        msg.style.display = "none";
+    }
+})
+
+*/
+
+
+
+
+
+/*
+let body = document.body as HTMLBodyElement;
+let select = document.createElement("select") as HTMLSelectElement;
+body.appendChild(select);
+let option1 = document.createElement("option") as HTMLOptionElement;
+let option2 = document.createElement("option") as HTMLOptionElement;
+let option3 = document.createElement("option") as HTMLOptionElement;
+select.appendChild(option1);
+select.appendChild(option2);
+select.appendChild(option3);
+
+option1.textContent = "India";
+option2.textContent = "Russia";
+option3.textContent = "Germany";
+
+option1.value = "India";
+option2.value = "Russia";
+option3.value = "Germany";
+
+let p = document.createElement("p") as HTMLParagraphElement;
+p.textContent = select.value;
+body.appendChild(p);
+
+select.addEventListener('change', ()=>{
+    p.textContent = select.value;
+})
+
+*/
+
+/*
+let text = document.getElementById("postContent") as HTMLTextAreaElement;
+let span = document.getElementById("charCount") as HTMLSpanElement;
+let count: number = 0;
+text.maxLength = 200;
+
+text.addEventListener('input', ()=>{
+    count = text.value.length;  
+    span.textContent = count+"/200";
+})
+*/
+
+/*
+let list = document.getElementById("items") as HTMLUListElement;
+let input = document.getElementById("inp") as HTMLInputElement;
+let button = document.getElementById("add") as HTMLButtonElement;
+
+button.addEventListener('click', ()=>{
+    let item = document.createElement("li") as HTMLElement;
+    let check = document.createElement("input") as HTMLInputElement;
+    check.type = "checkbox";
+    item.appendChild(check);
+    let text = document.createElement("p") as HTMLParagraphElement;
+    text.textContent = input.value;
+    item.appendChild(text);
+    input.value = "";
+    list.appendChild(item);
+    check.addEventListener('click', ()=>{
+      text.style.textDecoration = "line-through";
+    })
+})
+
+*/

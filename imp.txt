@@ -1,0 +1,117 @@
+/*
+function calculateArea(width: number, height: number): number {
+    return width*height;
+}
+
+console.log(calculateArea(5, 7));
+*/
+
+
+
+/*
+interface User{
+    id: number,
+    name: string,
+    isActive: boolean
+}
+
+const user: User = {
+    id: 1,
+    name: "Sudhanshu",
+    isActive: true
+}
+
+function printUser(users: User){
+    console.log(users.id);
+    console.log(users.name);
+    console.log(users.isActive);
+}
+
+printUser(user);
+
+*/
+
+/*
+
+function printValue(value: string | number): void {
+    if(typeof value === 'string'){
+        console.log(value.toUpperCase());
+    } else{
+        console.log(value*2);
+    }
+}
+
+printValue(2);
+printValue("what");
+*/
+
+
+/*
+interface Product {
+    id: number,
+    name: string,
+    price: number,
+}
+
+const product: Product[] = [
+    {id: 1, name: "Onyx Saint", price: 10000000},
+    {id: 2, name: "Soul Serpent", price: 1234023},
+    {id: 3, name: "Nightmare", price: 2000000},
+    {id: 4, name: "Raveneous Fiend", price: 452903},
+    {id: 5, name: "Slayer", price: 100000},
+    {id: 6, name: "Marvelous Mimic", price: 1204144},
+]
+
+function logProducts(pro: Product[]): void{
+    pro.forEach((item)=>{
+        console.log(item.id, item.name, item.price);
+    })
+}
+
+logProducts(product);
+
+*/
+
+/*
+let num: string = '10';
+
+interface employee {
+    id: number,
+    name: string,
+}
+
+let Emp: employee = {
+    id: 10,
+    name: "sudhanshu"
+}
+*/
+/*
+
+
+enum size {small, medium, large};
+
+const person: size = size.small;
+console.log(person);
+
+*/
+
+/*
+
+const hello2: any[] = [10, 10, 23, false, "hello"];
+
+
+const hello: [number, string, boolean] = [10, "hell", false];
+
+console.log(hello[0]);
+
+*/
+
+/*
+
+let name100: {
+    id: number,
+    name: string,
+    email? : string | number,
+} = { id: 10, name: "String" }
+
+*/
